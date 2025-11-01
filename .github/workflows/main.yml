@@ -1,0 +1,26 @@
+name: Daily Weather & Moon
+
+on:
+  schedule:
+    - cron: "0 12 * * *"   # runs daily at 12:00 UTC
+  workflow_dispatch:        # lets you run manually, too
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run script
+        env:
+          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK }}
+        run: python daily_sky.py

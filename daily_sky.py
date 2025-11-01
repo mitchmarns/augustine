@@ -74,15 +74,15 @@ lower = moon_name.lower()
 # ── Werewolf notes (dynamic) ───────────────────────────────────────────────────
 notes = []
 if "waning crescent" in lower or "new moon" in lower or "waxing crescent" in lower:
-    notes.append("Many avoid going out after sundown between **Third Quarter → First Quarter** (around the new moon).")
+    notes.append("Many wolves avoid going out after sundown between **Third Quarter → First Quarter** (around the new moon).")
 if "full moon" in lower:
     notes.append("**Full moon tonight:** the shift is **unavoidable** and **painful**; born wolves handle it best.")
 elif "waxing gibbous" in lower:
-    notes.append("**Waxing gibbous:** most **ill-tempered**; moodiness and restlessness peak before the full moon.")
+    notes.append("**Waxing gibbous:** most **ill-tempered**; moodiness and restlessness peak for wolves before the full moon.")
 elif "waning gibbous" in lower:
-    notes.append("**Waning gibbous:** most **physically & emotionally exhausted** after the full moon.")
+    notes.append("**Waning gibbous:** Wolves most **physically & emotionally exhausted** after the full moon.")
 elif "new moon" in lower:
-    notes.append("**New moon:** calmest period. Only time new wolves can be created via an **alpha** bite; others leave a mark but don’t pass the curse.")
+    notes.append("**New moon:** calmest period for wolves. Only time new wolves can be created via an **alpha** bite; others leave a mark but don’t pass the curse.")
 werewolf_note = "\n".join(notes) if notes else "Wolves feel the lunar pull; phases influence mood, stamina, and control."
 
 # ── Build embed ────────────────────────────────────────────────────────────────
@@ -98,9 +98,8 @@ desc = (
 )
 
 embed = {
-    "color": 0x393b8c,
+    "color": 0x2F3136,
     "description": (
-        "━━━━━━━━━━━━━━━━━━━\n"
         "> ⠀\n"
         ">  **{city} · Weather & Moon** \n"
         "> ⠀\n"
@@ -111,10 +110,8 @@ embed = {
         "> ⠀\n"
         ">  {moon_name} ({illum}% lit)\n"
         "> ⠀\n"
-        "━━━━━━━━━━━━━━━━━━━\n"
-        ">  {werewolf_note}\n"
-        "> ⠀\n"
-        "━━━━━━━━━━━━━━━━━━━"
+        ">  *{werewolf_note}*\n"
+        "> ⠀"
     ).format(
         city=CITY_NAME,
         emoji=sky_emoji,

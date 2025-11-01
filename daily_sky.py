@@ -100,6 +100,7 @@ desc = (
 embed = {
     "color": 0x393b8c,
     "description": (
+        "━━━━━━━━━━━━━━━━━━━\n"
         "> ⠀\n"
         ">  **{city} · Weather & Moon** \n"
         "> ⠀\n"
@@ -109,7 +110,11 @@ embed = {
         ">  💨 {wind_mph:.0f} mph · 💧{hum}% humidity\n"
         "> ⠀\n"
         ">  {moon_name} ({illum}% lit)\n"
-        "> ⠀"
+        "> ⠀\n"
+        "━━━━━━━━━━━━━━━━━━━\n"
+        ">  {werewolf_note}\n"
+        "> ⠀\n"
+        "━━━━━━━━━━━━━━━━━━━"
     ).format(
         city=CITY_NAME,
         emoji=sky_emoji,
@@ -121,7 +126,8 @@ embed = {
         wind_mph=wind_mph,
         hum=hum,
         moon_name=moon_name,
-        illum=illum
+        illum=illum,
+        werewolf_note=werewolf_note
     ),
     "footer": {"text": f"Sky Watch · {VERSION}"},
     "timestamp": datetime.datetime.utcnow().isoformat()

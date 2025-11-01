@@ -98,16 +98,35 @@ desc = (
 )
 
 embed = {
-    "title": f"{CITY_NAME} · Weather & Moon",
-    "description": desc,
     "color": 0x393b8c,
-    "fields": [
-        {"name": "Moon", "value": f"{moon_name} ({illum}% lit)", "inline": True},
-        {"name": "Werewolf", "value": werewolf_note, "inline": False}
-    ],
+    "description": (
+        "> ⠀\n"
+        ">  **{city} · Weather & Moon** \n"
+        "> ⠀\n"
+        ">  {emoji} **{label}**\n"
+        ">  **{temp_c:.0f}°C / {temp_f:.0f}°F**, feels {feels_c:.0f}°C / {feels_f:.0f}°F\n"
+        ">  🔺 {hi_c:.0f}°C / {hi_f:.0f}°F · 🔻 {lo_c:.0f}°C / {lo_f:.0f}°F\n"
+        ">  💨 {wind_mph:.0f} mph · 💧{hum}% humidity\n"
+        "> ⠀\n"
+        ">  {moon_name} ({illum}% lit)\n"
+        "> ⠀"
+    ).format(
+        city=CITY_NAME,
+        emoji=sky_emoji,
+        label=sky_label.title(),
+        temp_c=temp_c, temp_f=temp_c*9/5+32,
+        feels_c=feels_c, feels_f=feels_c*9/5+32,
+        hi_c=hi_c, hi_f=hi_c*9/5+32,
+        lo_c=lo_c, lo_f=lo_c*9/5+32,
+        wind_mph=wind_mph,
+        hum=hum,
+        moon_name=moon_name,
+        illum=illum
+    ),
     "footer": {"text": f"Sky Watch · {VERSION}"},
     "timestamp": datetime.datetime.utcnow().isoformat()
 }
+
 
 payload = {"username": "Sky Watch", "embeds": [embed]}
 res = requests.post(WEBHOOK_URL, json=payload, timeout=20)

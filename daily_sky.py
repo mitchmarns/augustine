@@ -2,7 +2,7 @@ import requests, datetime, os
 
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 LAT, LON = 40.70, -77.60
-CITY_NAME = "Augustine Heights"
+CITY_NAME = "Augustine"
 VERSION = "v2.4"  # bump when you redeploy
 
 # ── Fetch current + today's high/low (Open-Meteo, no key) ──────────────────────
